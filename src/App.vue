@@ -1,12 +1,33 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div>
+    <router-view/>
+    <main-tab-bar class="main-tab-bar"/> 
+    
+
   </div>
-  <router-view/>
+ 
 </template>
 
+<script>
+ import MainTabBar from 'components/content/mainTabbar/MainTabBar';
+
+export default {
+  name: "app",
+  components: {
+    MainTabBar
+  },
+  mounted () {
+    window.onresize = () => {
+      return (() => {
+        this.$forceUpdate();
+      })()
+    }
+  }
+}
+</script>
+
 <style>
+  @import 'assets/css/base.css';
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
