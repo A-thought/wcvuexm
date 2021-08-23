@@ -1,0 +1,115 @@
+<template>
+  <div id="shop-item">
+    <div class="item-selector">
+      <check-button :ischeck="product.checked" @click="showclick()"></check-button>
+    </div>
+    <div class="item-img" @click="detailjump(product.iid)">
+      <img :src="product.image" alt="商品图片">
+    </div>
+    <div class="item-info">
+      <div class="item-title">{{product.title}}</div>
+      <div class="item-desc">商品描述: {{product.desc}}</div>
+      <div class="info-bottom">
+        <div class="item-price left">￥{{product.realprice}}</div>
+        <div class="item-count right">x{{product.count}}</div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import CheckButton from "components/content/checkbutton/CheckButton"
+export default {
+  data () {
+    return {
+    }
+  },
+  props: {
+      product: {
+          type: Object,
+          detault() {
+              return {}
+          }
+      }
+  },
+  components: {
+    CheckButton
+  },
+  methods: {
+      showclick() {
+          this.product.checked = !this.product.checked
+      },
+      detailjump(iid){
+        this.$router.push({
+          path: '/detail',
+          query:{
+            iid: iid
+          }
+        })
+      }
+  }
+}
+</script>
+
+<style scoped>
+  #shop-item {
+    width: 100%;
+    display: flex;
+    font-size: 0;
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .item-selector {
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .item-title, .item-desc {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .item-img {
+    padding: 5px;
+    width: 30%;
+    height: 100%;
+    /*border: 1px solid #ccc;*/
+  }
+
+  .item-img img {
+    width: 100%;
+    display: block;
+    border-radius: 5px;
+  }
+
+  .item-info {
+    width: 66%;
+    font-size: 17px;
+    color: #333;
+    padding: 5px 10px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .item-info .item-desc {
+    font-size: 14px;
+    color: #666;
+    margin-top: 15px;
+  }
+
+  .info-bottom {
+    margin-top: 10px;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+  }
+
+  .info-bottom .item-price {
+    color: orangered;
+  }
+</style>

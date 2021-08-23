@@ -38,19 +38,17 @@
   }
 </script>
 
-<style scoped>
+<style>
   .tab-bar-item {
     flex: 1;
     text-align: center;
-    height: 90px;
+    height: 80px;
     font-size: 14px;
   }
 
-  .tab-bar-item img {
-    width: 24px;
-    height: 24px;
+  .tab-bar-item div img{
+    width: 40px;
+    height: 40px;
     margin-top: 5px;
-    vertical-align: middle;
-    margin-bottom: 2px;
   }
 </style>

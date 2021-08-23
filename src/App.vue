@@ -1,9 +1,12 @@
 <template>
   <div>
-    <router-view/>
-    <main-tab-bar class="main-tab-bar"/> 
+    <router-view class="app-margin" v-slot="{ Component }">
+      <keep-alive exclude="Detail">
+        <component :is="Component" />
+      </keep-alive>
+    </router-view>
     
-
+    <main-tab-bar class="main-tab-bar" v-if="$route.meta.footShow"/> 
   </div>
  
 </template>
@@ -15,37 +18,15 @@ export default {
   name: "app",
   components: {
     MainTabBar
-  },
-  mounted () {
-    window.onresize = () => {
-      return (() => {
-        this.$forceUpdate();
-      })()
-    }
   }
 }
 </script>
 
 <style>
   @import 'assets/css/base.css';
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+  #app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    color: #2c3e50;
+  }
 
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
 </style>

@@ -7,19 +7,43 @@ const routes = [
   },
   {
     path: '/home',
-    component: () => import("@/views/home/Home")
+    name: "Home",
+    component: () => import("@/views/home/Home"),
+    meta: {
+      footShow: true, // true显示，false隐藏
+    }
   },
   {
     path: '/category',
-    component: () => import("@/views/category/Category")
+    name: "Category",
+    component: () => import("@/views/category/Category"),
+    meta: {
+      footShow: true, // true显示，false隐藏
+    }
   },
   {
     path: '/cart',
-    component: () => import("@/views/cart/Cart")
+    name: "Cart",
+    component: () => import("@/views/cart/Cart"),
+    meta: {
+      footShow: true, // true显示，false隐藏
+    }
   },
   {
     path: '/profile',
-    component: () => import("@/views/profile/Profile")
+    name: "Profile",
+    component: () => import("@/views/profile/Profile"),
+    meta: {
+      footShow: true, // true显示，false隐藏
+    }
+  },
+  {
+    path: '/detail',
+    name:"Detail",
+    component: () => import("@/views/detail/Detail"),
+    meta: {
+      footShow: false, // true显示，false隐藏
+    }
   }
 ]
 
